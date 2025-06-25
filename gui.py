@@ -188,10 +188,12 @@ class App:
 
         # Initialize video stream
         self.stream = VideoStream(VIDEO_NODE, PREVIEW_FOURCC, PREVIEW_W, PREVIEW_H, PREVIEW_FPS)
-        self.start_preview()
-
-        # UI Layout
+        
+        # UI Layout (create UI first)
         self._create_ui()
+        
+        # Then start preview
+        self.start_preview()
         
         # Start update loop
         root.protocol("WM_DELETE_WINDOW", self.on_close)
@@ -394,3 +396,4 @@ if __name__ == "__main__":
     root = tk.Tk()
     app = App(root)
     root.mainloop()
+    
