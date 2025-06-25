@@ -45,7 +45,8 @@ def fswebcam_capture():
     
     # Stop GUI stream first
     App.instance.streaming = False
-    time.sleep(0.3)  # Give time for stream to stop
+    App.instance.stream.stop()  # Explicitly stop and release camera
+    time.sleep(1.0)  # Give more time for device to be fully released
     
     try:
         # fswebcam command for ELP-48
@@ -82,8 +83,9 @@ def fswebcam_capture():
         print(f"[!] fswebcam exception: {e}")
         return False, str(e)
     finally:
-        # Always restart the stream
-        time.sleep(0.5)
+        # Always restart the stream after a longer delay
+        time.sleep(1.0)
+        print("[*] Restarting preview stream...")
         App.instance.start_preview()
 
 class VideoStream:
@@ -396,4 +398,3 @@ if __name__ == "__main__":
     root = tk.Tk()
     app = App(root)
     root.mainloop()
-    
