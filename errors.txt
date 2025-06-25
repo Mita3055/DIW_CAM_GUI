@@ -1,0 +1,22 @@
+=== ELP-48 Camera GUI ===
+Stream format: YUYV 640x480 @ 20fps
+Capture format: MJPG 8000x6000 via fswebcam
+
+[+] fswebcam found: version unknown
+[+] v4l2-ctl found
+[+] Camera device /dev/video0 found and accessible
+
+[*] Starting video stream: 640x480 YUYV @ 20fps
+[+] Stream started: 640x480 @ 20.0fps
+[+] Preview stream started
+
+Traceback (most recent call last):
+  File "/home/DIW/Desktop/camera_gui/camera_gui.py", line 395, in <module>
+    app = App(root)
+          ^^^^^^^^^
+  File "/home/DIW/Desktop/camera_gui/camera_gui.py", line 191, in __init__
+    self.start_preview()
+  File "/home/DIW/Desktop/camera_gui/camera_gui.py", line 267, in start_preview
+    self.status_lbl.config(text="Stream active", fg="green")
+    ^^^^^^^^^^^^^^^
+AttributeError: 'App' object has no attribute 'status_lbl'
